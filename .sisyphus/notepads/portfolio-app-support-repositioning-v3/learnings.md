@@ -1,0 +1,3 @@
+- 2026-03-29: OpenStatus public status UX is concentrated in `apps/status-page/src/app/(status-page)/[domain]/[locale]/(public)` and `src/components/status-page/*`.
+- 2026-03-29: Core remake priority should be `page.tsx` (public home), events list/detail routes, and `status-monitor` + `status-tracker` + `status-feed` component patterns.
+- 2026-03-29: Status color semantics map cleanly to portfolio-friendly frontend states: success (green), degraded (amber), error/outage (red), maintenance/info (blue), unknown (gray).
