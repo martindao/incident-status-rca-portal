@@ -2,48 +2,48 @@ import type { Incident } from '../types/incident';
 
 export const incidents: Incident[] = [
   {
-    id: 'INC-2024-001',
+    id: 'INC-2026-001',
     title: 'Database Connection Pool Exhaustion',
     status: 'resolved',
     components: ['database', 'api', 'auth'],
-    createdAt: '2024-03-15T08:00:00Z',
-    updatedAt: '2024-03-15T10:00:00Z',
+    createdAt: '2026-03-27T08:00:00Z',
+    updatedAt: '2026-03-27T10:00:00Z',
     timeline: [
       {
         id: 'evt-1',
         type: 'reported',
         message: 'Incident Reported - API errors detected across multiple endpoints',
-        timestamp: '2024-03-15T08:00:00Z',
+        timestamp: '2026-03-27T08:00:00Z',
       },
       {
         id: 'evt-2',
         type: 'identified',
         message: 'Investigating - Database team engaged, checking connection metrics',
-        timestamp: '2024-03-15T08:15:00Z',
+        timestamp: '2026-03-27T08:15:00Z',
       },
       {
         id: 'evt-3',
         type: 'identified',
         message: 'Root Cause Identified - Connection pool limit (100) exceeded under peak load',
-        timestamp: '2024-03-15T08:45:00Z',
+        timestamp: '2026-03-27T08:45:00Z',
       },
       {
         id: 'evt-4',
         type: 'deployed',
         message: 'Fix Deployed - Pool size increased to 200, connection timeout added',
-        timestamp: '2024-03-15T09:00:00Z',
+        timestamp: '2026-03-27T09:00:00Z',
       },
       {
         id: 'evt-5',
         type: 'monitoring',
         message: 'Monitoring - Traffic normalizing, error rates declining',
-        timestamp: '2024-03-15T09:30:00Z',
+        timestamp: '2026-03-27T09:30:00Z',
       },
       {
         id: 'evt-6',
         type: 'resolved',
         message: 'Resolved - All services operational, connection pool stable',
-        timestamp: '2024-03-15T10:00:00Z',
+        timestamp: '2026-03-27T10:00:00Z',
       },
     ],
     rca: {
@@ -62,36 +62,36 @@ export const incidents: Incident[] = [
     },
   },
   {
-    id: 'INC-2024-002',
+    id: 'INC-2026-002',
     title: 'CDN Edge Node Degradation',
     status: 'resolved',
     components: ['cdn'],
-    createdAt: '2024-03-10T14:30:00Z',
-    updatedAt: '2024-03-10T15:45:00Z',
+    createdAt: '2026-03-20T14:30:00Z',
+    updatedAt: '2026-03-20T15:45:00Z',
     timeline: [
       {
         id: 'evt-7',
         type: 'reported',
         message: 'Incident Reported - Increased latency on static assets',
-        timestamp: '2024-03-10T14:30:00Z',
+        timestamp: '2026-03-20T14:30:00Z',
       },
       {
         id: 'evt-8',
         type: 'identified',
         message: 'Investigating - CDN provider reports edge node issues in US-East',
-        timestamp: '2024-03-10T14:45:00Z',
+        timestamp: '2026-03-20T14:45:00Z',
       },
       {
         id: 'evt-9',
         type: 'deployed',
         message: 'Fix Deployed - Traffic rerouted to healthy edge nodes',
-        timestamp: '2024-03-10T15:15:00Z',
+        timestamp: '2026-03-20T15:15:00Z',
       },
       {
         id: 'evt-10',
         type: 'resolved',
         message: 'Resolved - CDN performance restored to normal levels',
-        timestamp: '2024-03-10T15:45:00Z',
+        timestamp: '2026-03-20T15:45:00Z',
       },
     ],
     rca: {
@@ -112,24 +112,24 @@ export const incidents: Incident[] = [
 
 export const pastIncidents: Incident[] = [
   {
-    id: 'INC-2024-000',
+    id: 'INC-2026-000',
     title: 'Payment Gateway Timeout',
     status: 'resolved',
     components: ['payments'],
-    createdAt: '2024-02-28T11:00:00Z',
-    updatedAt: '2024-02-28T12:30:00Z',
+    createdAt: '2026-02-28T11:00:00Z',
+    updatedAt: '2026-02-28T12:30:00Z',
     timeline: [
       {
         id: 'evt-11',
         type: 'reported',
         message: 'Payment processing delays reported',
-        timestamp: '2024-02-28T11:00:00Z',
+        timestamp: '2026-02-28T11:00:00Z',
       },
       {
         id: 'evt-12',
         type: 'resolved',
         message: 'Payment gateway provider resolved the issue',
-        timestamp: '2024-02-28T12:30:00Z',
+        timestamp: '2026-02-28T12:30:00Z',
       },
     ],
   },

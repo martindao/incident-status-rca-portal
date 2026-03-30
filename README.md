@@ -9,21 +9,19 @@ A professional status page and incident management portal demonstrating system h
 
 ## Screenshots
 
-These image slots are intentionally kept in the README as proof placeholders for the status page UI.
+The screenshots below were captured from the running app and are stored in `docs/screenshots/` as `status.png`, `timeline.png`, and `rca.png`.
 
 | Status Overview | Incident Timeline | RCA Panel |
 |----------------|-------------------|-----------|
-| ![Status placeholder](docs/screenshots/status.png) | ![Timeline placeholder](docs/screenshots/timeline.png) | ![RCA placeholder](docs/screenshots/rca.png) |
-
-> Replace the placeholder image files in `docs/screenshots/` with current captures from the remade UI.
+| ![Status overview](docs/screenshots/status.png) | ![Incident timeline](docs/screenshots/timeline.png) | ![RCA panel](docs/screenshots/rca.png) |
 
 ## Source inspiration disclosure
 
 This portfolio rebuild is visually and structurally inspired by open-source status page platforms:
 
-- **[Cachet](https://github.com/cachethq/Cachet)** — status page communication patterns, component health visualization, incident timeline structure
+- **[OpenStatus](https://github.com/openstatusHQ/openstatus)** — public status communication patterns, component health summaries, incident history layout
 
-This is an original React implementation for portfolio use. The goal is to study real support product patterns and recreate the feel of that workflow in a smaller standalone app. No source code was copied from those projects.
+This is an original React implementation built for portfolio use. The goal is to study support-product patterns and recreate a focused incident communication workflow in a smaller standalone app. No source code was copied from the source project.
 
 ## Support relevance
 
@@ -254,7 +252,7 @@ This is an original inspired rebuild, not a direct clone. It demonstrates unders
 
 ## Inspiration
 
-This project was inspired by [Cachet](https://github.com/cachethq/Cachet), an open-source status page platform. It is an original rebuild for portfolio demonstration purposes, not a direct clone.
+This project was inspired by [openstatusHQ/openstatus](https://github.com/openstatusHQ/openstatus), an open-source status platform. It is an original rebuild for portfolio demonstration purposes, not a direct clone.
 
 ## License
 
