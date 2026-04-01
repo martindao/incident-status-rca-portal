@@ -1,12 +1,620 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PREMIUM-DARK TOKEN BASELINE
+   Shared dark foundation for Tech Support Portfolio apps
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+/* ─── Surface Scale (darkest → lightest) ─── */
+--surface-950: #030712; /* Canvas - deepest background */
+--surface-900: #0a0f1a; /* App shell */
+--surface-850: #0d1420; /* Intermediate surface */
+--surface-800: #111827; /* Cards, panels */
+--surface-750: #1a2332; /* Hover intermediate */
+--surface-700: #1f2937; /* Elevated surfaces */
+--surface-600: #374151; /* Hover states */
+
+  /* ─── Text Scale (dim → bright) ─── */
+  --text-100: #f9fafb;     /* Primary text - headings */
+  --text-200: #e5e7eb;     /* Secondary text - body */
+  --text-300: #9ca3af;     /* Tertiary text - labels */
+  --text-400: #6b7280;     /* Muted text - hints */
+  --text-500: #4b5563;     /* Disabled/placeholder */
+
+/* ─── Border Scale ─── */
+--border-subtle: rgba(255, 255, 255, 0.06);
+--border-default: rgba(255, 255, 255, 0.10);
+--border-strong: rgba(255, 255, 255, 0.16);
+--border-focus: rgba(99, 102, 241, 0.50);
+
+/* Border Radius Scale (consistent across suite) */
+--radius-sm: 4px;
+--radius-md: 8px;
+--radius-lg: 12px;
+--radius-xl: 16px;
+
+/* ─── Shadow/Elevation ─── */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.50), 0 2px 4px -2px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.60), 0 4px 6px -4px rgba(0, 0, 0, 0.50);
+  --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.80);
+
+  /* ─── Focus Ring ─── */
+  --focus-ring: 0 0 0 2px var(--surface-950), 0 0 0 4px var(--border-focus);
+
+/* ─── Typography ─── */
+--font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+--font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+/* Typography Scale (consistent across suite) */
+--text-xs: 11px;
+--text-sm: 13px;
+--text-base: 15px;
+--text-lg: 18px;
+--text-xl: 22px;
+--text-2xl: 28px;
+
+/* Spacing Scale (consistent across suite) */
+--space-1: 4px;
+--space-2: 8px;
+--space-3: 12px;
+--space-4: 16px;
+--space-5: 20px;
+--space-6: 24px;
+--space-8: 32px;
+
+/* ─── Transitions ─── */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     INCIDENT STATUS & RCA - ACCENT PALETTE
+     Indigo/Slate (brand/neutral) + Red/Green (incident states)
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* ─── Primary Accent: Indigo (Brand, Headers) ─── */
+  --accent-primary: #6366f1;
+  --accent-primary-hover: #818cf8;
+  --accent-primary-muted: rgba(99, 102, 241, 0.15);
+  --accent-primary-subtle: rgba(99, 102, 241, 0.08);
+  --accent-primary-text: #a5b4fc;
+
+  /* ─── Secondary Accent: Slate (Neutral, Secondary) ─── */
+  --accent-secondary: #64748b;
+  --accent-secondary-hover: #94a3b8;
+  --accent-secondary-muted: rgba(100, 116, 139, 0.15);
+
+  /* ─── Semantic: Critical/Major Outage ─── */
+  --semantic-critical: #ef4444;
+  --semantic-critical-muted: rgba(239, 68, 68, 0.15);
+  --semantic-critical-text: #fca5a5;
+
+  /* ─── Semantic: Warning/Degraded ─── */
+  --semantic-warning: #f59e0b;
+  --semantic-warning-muted: rgba(245, 158, 11, 0.15);
+
+  /* ─── Semantic: Success/Operational ─── */
+  --semantic-success: #22c55e;
+  --semantic-success-muted: rgba(34, 197, 94, 0.15);
+  --semantic-success-text: #86efac;
+
+  /* ─── Semantic: Info/Monitoring ─── */
+  --semantic-info: #3b82f6;
+  --semantic-info-muted: rgba(59, 130, 246, 0.15);
+
+  /* ─── Canvas & Background ─── */
+  --canvas: var(--surface-950);
+  --background: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-hover: var(--surface-700);
+
+  color-scheme: dark;
+
+  --foreground: oklch(0.145 0 0);
+
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0);
+
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+
+  --muted-foreground: oklch(0.556 0 0);
+
+  --accent: oklch(0.97 0 0);
+
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+
+  --input: oklch(0.922 0 0);
+
+  --ring: oklch(0.708 0 0);
+
+  --chart-1: oklch(0.87 0 0);
+
+  --chart-2: oklch(0.556 0 0);
+
+  --chart-3: oklch(0.439 0 0);
+
+  --chart-4: oklch(0.371 0 0);
+
+  --chart-5: oklch(0.269 0 0);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0 0);
+
+  --sidebar-foreground: oklch(0.145 0 0);
+
+  --sidebar-primary: oklch(0.205 0 0);
+
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.97 0 0);
+
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  --sidebar-border: oklch(0.922 0 0);
+
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* ─── Base Styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
+  background: var(--canvas);
+  color: var(--text-200);
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+STATUS OVERVIEW - HERO POLISH (Gap 3.1)
+Subtle glow and premium feel for the status indicator
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Status indicator glow ring - operational state */
+.status-indicator-operational {
+  position: relative;
+}
+
+.status-indicator-operational::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: var(--semantic-success);
+  opacity: 0.15;
+  filter: blur(8px);
+  transition: opacity 200ms ease-out;
+}
+
+.status-indicator-operational:hover::before {
+  opacity: 0.25;
+}
+
+/* Status indicator glow ring - warning state */
+.status-indicator-warning {
+  position: relative;
+}
+
+.status-indicator-warning::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: var(--semantic-warning);
+  opacity: 0.15;
+  filter: blur(8px);
+  transition: opacity 200ms ease-out;
+}
+
+.status-indicator-warning:hover::before {
+  opacity: 0.25;
+}
+
+/* Status indicator glow ring - critical state */
+.status-indicator-critical {
+  position: relative;
+}
+
+.status-indicator-critical::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: var(--semantic-critical);
+  opacity: 0.15;
+  filter: blur(8px);
+  transition: opacity 200ms ease-out;
+}
+
+.status-indicator-critical:hover::before {
+  opacity: 0.25;
+}
+
+/* Premium status card container */
+.status-overview-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.status-overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-primary-subtle),
+    transparent
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+COMPONENT CARDS - VISUAL HIERARCHY (Gap 3.2)
+Differentiate cards by status with subtle visual cues
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Operational cards - calm, confident */
+.component-card-operational {
+  border-left: 3px solid var(--semantic-success);
+}
+
+.component-card-operational:hover {
+  border-left-color: var(--semantic-success-text);
+}
+
+/* Degraded cards - attention needed */
+.component-card-degraded {
+  border-left: 3px solid var(--semantic-warning);
+}
+
+.component-card-degraded:hover {
+  border-left-color: var(--semantic-warning);
+}
+
+/* Partial outage cards - elevated concern */
+.component-card-partial_outage {
+  border-left: 3px solid var(--semantic-warning);
+  background: var(--surface-700);
+}
+
+.component-card-partial_outage:hover {
+  border-left-color: var(--semantic-warning);
+}
+
+/* Major outage cards - urgent */
+.component-card-major_outage {
+  border-left: 3px solid var(--semantic-critical);
+  background: var(--surface-700);
+}
+
+.component-card-major_outage:hover {
+  border-left-color: var(--semantic-critical-text);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+HEADER - BRAND MOMENT (Gap 3.3)
+Subtle brand accent and premium feel
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Header brand container */
+.header-brand {
+  position: relative;
+}
+
+.header-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    transparent
+  );
+  opacity: 0.5;
+  transition: opacity 200ms ease-out;
+}
+
+.header-brand:hover::after {
+  opacity: 0.8;
+}
+
+/* Shield icon glow */
+.header-shield-glow {
+  position: relative;
+}
+
+.header-shield-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 8px;
+  background: var(--accent-primary);
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 200ms ease-out;
+}
+
+.header-shield-glow:hover::before {
+  opacity: 0.3;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+RCA PANEL - SMOOTH EXPAND ANIMATION (Gap 3.4)
+Editorial feel with smooth height transition
+═════════════════════════════════════════════════════════════════════════ */
+
+/* RCA panel content wrapper for animation */
+.rca-panel-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 200ms ease-out, opacity 150ms ease-out;
+}
+
+.rca-panel-content.expanded {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+TIMELINE EVENTS - VISUAL HIERARCHY (Gap 3.5)
+Last event (resolved) pops with glow and scale
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Timeline event status badge container */
+.timeline-event-badge {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+/* Last event (resolved) - hero treatment */
+.timeline-event-last .timeline-event-badge {
+  transform: scale(1.15);
+}
+
+.timeline-event-last .timeline-event-badge::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: var(--semantic-success);
+  opacity: 0.2;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+INCIDENT HISTORY FILTER BUTTONS - HIERARCHY (Gap 3.6)
+Resolved/All prominent, others subdued
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Filter button base */
+.filter-btn {
+  position: relative;
+  transition: background-color 150ms ease-out, color 150ms ease-out, transform 150ms ease-out;
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Primary filters (All, Resolved) - more prominent */
+.filter-btn-primary {
+  font-weight: 600;
+}
+
+/* Secondary filters - subdued */
+.filter-btn-secondary {
+  opacity: 0.85;
+}
+
+.filter-btn-secondary:hover {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+COMPONENT CARDS - ENHANCED HOVER (Gap 3.7)
+Stronger visual feedback with scale and glow
+═════════════════════════════════════════════════════════════════════════ */
+
+/* Enhanced component card hover */
+.component-card-enhanced {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.component-card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-strong);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+FOOTER - PREMIUM POLISH (Gap 3.8)
+Subtle brand moment, not generic
+═════════════════════════════════════════════════════════════════════════ */
+
+.footer-premium {
+  position: relative;
+}
+
+.footer-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-primary-subtle),
+    transparent
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+INCIDENT SIMULATOR - VISUAL CONNECTION (Gap 3.9)
+Integrate with page flow, not tacked-on
+═════════════════════════════════════════════════════════════════════════ */
+
+.simulator-section {
+  position: relative;
+  border-left: 3px solid var(--accent-primary-muted);
+  padding-left: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.simulator-section::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-primary),
+    var(--accent-primary-muted)
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+T2: CSS HOVER CLASSES (replacing inline onMouseEnter/onMouseLeave)
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* RCA panel header hover (non-expanded) */
+.rca-header:not(.expanded):hover {
+  background: var(--surface-700) !important;
+}
+
+@theme inline {
+--font-heading: var(--font-sans);
+--font-sans: 'Geist Variable', sans-serif;
+--color-sidebar-ring: var(--sidebar-ring);
+--color-sidebar-border: var(--sidebar-border);
+--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+--color-sidebar-accent: var(--sidebar-accent);
+--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+--color-sidebar-primary: var(--sidebar-primary);
+--color-sidebar-foreground: var(--sidebar-foreground);
+--color-sidebar: var(--sidebar);
+--color-chart-5: var(--chart-5);
+--color-chart-4: var(--chart-4);
+--color-chart-3: var(--chart-3);
+--color-chart-2: var(--chart-2);
+--color-chart-1: var(--chart-1);
+--color-ring: var(--ring);
+--color-input: var(--input);
+--color-border: var(--border);
+--color-destructive: var(--destructive);
+--color-accent-foreground: var(--accent-foreground);
+--color-accent: var(--accent);
+--color-muted-foreground: var(--muted-foreground);
+--color-muted: var(--muted);
+--color-secondary-foreground: var(--secondary-foreground);
+--color-secondary: var(--secondary);
+--color-primary-foreground: var(--primary-foreground);
+--color-primary: var(--primary);
+--color-popover-foreground: var(--popover-foreground);
+--color-popover: var(--popover);
+--color-card-foreground: var(--card-foreground);
+--color-card: var(--card);
+--color-foreground: var(--foreground);
+--color-background: var(--background);
+--radius-sm: calc(var(--radius) * 0.6);
+--radius-md: calc(var(--radius) * 0.8);
+--radius-lg: var(--radius);
+--radius-xl: calc(var(--radius) * 1.4);
+--radius-2xl: calc(var(--radius) * 1.8);
+--radius-3xl: calc(var(--radius) * 2.2);
+--radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+--background: oklch(0.145 0 0);
+--foreground: oklch(0.985 0 0);
+--card: oklch(0.205 0 0);
+--card-foreground: oklch(0.985 0 0);
+--popover: oklch(0.205 0 0);
+--popover-foreground: oklch(0.985 0 0);
+--primary: oklch(0.922 0 0);
+--primary-foreground: oklch(0.205 0 0);
+--secondary: oklch(0.269 0 0);
+--secondary-foreground: oklch(0.985 0 0);
+--muted: oklch(0.269 0 0);
+--muted-foreground: oklch(0.708 0 0);
+--accent: oklch(0.269 0 0);
+--accent-foreground: oklch(0.985 0 0);
+--destructive: oklch(0.704 0.191 22.216);
+--border: oklch(1 0 0 / 10%);
+--input: oklch(1 0 0 / 15%);
+--ring: oklch(0.556 0 0);
+--chart-1: oklch(0.87 0 0);
+--chart-2: oklch(0.556 0 0);
+--chart-3: oklch(0.439 0 0);
+--chart-4: oklch(0.371 0 0);
+--chart-5: oklch(0.269 0 0);
+--sidebar: oklch(0.205 0 0);
+--sidebar-foreground: oklch(0.985 0 0);
+--sidebar-primary: oklch(0.488 0.243 264.376);
+--sidebar-primary-foreground: oklch(0.985 0 0);
+--sidebar-accent: oklch(0.269 0 0);
+--sidebar-accent-foreground: oklch(0.985 0 0);
+--sidebar-border: oklch(1 0 0 / 10%);
+--sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+}
+  body {
+    @apply bg-background text-foreground;
+}
+  html {
+    @apply font-sans;
+}
 }

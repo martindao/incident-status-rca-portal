@@ -17,25 +17,27 @@ const iconMap: Record<string, typeof Server> = {
 export function ComponentCard({ component }: ComponentCardProps) {
   const Icon = iconMap[component.id] || Server;
 
+  const statusClass = `component-card-${component.status}`;
+
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className={`bg-[var(--surface-800)] rounded-lg border border-[var(--border-default)] p-5 shadow-[var(--shadow-sm)] component-card-enhanced ${statusClass}`}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-gray-50 rounded-lg">
-            <Icon className="w-5 h-5 text-gray-600" />
+          <div className="p-2 bg-[var(--accent-primary-subtle)] rounded-lg">
+            <Icon className="w-5 h-5 text-[var(--accent-primary)]" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">{component.name}</h3>
-            <p className="text-sm text-gray-500">{component.description}</p>
+            <h3 className="font-semibold text-[var(--text-100)]">{component.name}</h3>
+            <p className="text-sm text-[var(--text-400)]">{component.description}</p>
           </div>
         </div>
       </div>
-      
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+
+      <div className="flex items-center justify-between mt-4 pt-4 border-t border-[var(--border-subtle)]">
         <StatusBadge status={component.status} type="component" size="sm" />
-        <div className="text-sm text-gray-600">
-          <span className="font-medium text-gray-900">{component.uptime}%</span>
-          <span className="text-gray-400 ml-1">uptime</span>
+        <div className="text-sm text-[var(--text-300)]">
+          <span className="font-medium text-[var(--text-100)]">{component.uptime}%</span>
+          <span className="text-[var(--text-500)] ml-1">uptime</span>
         </div>
       </div>
     </div>

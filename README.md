@@ -7,6 +7,36 @@ A professional status page and incident management portal demonstrating system h
 ![Vite](https://img.shields.io/badge/Vite-8-purple?logo=vite)
 ![Tailwind](https://img.shields.io/badge/Tailwind-4-cyan?logo=tailwindcss)
 
+## Case Study
+
+### The Problem
+
+During outages, stakeholders need trustworthy, real-time status communication. Generic status pages show "System Down" but hide the narrative: *What happened? When will it be fixed? What's being done?* This creates support ticket spikes and executive escalations.
+
+### The Approach
+
+Built a status portal with component health, incident timeline, and structured RCA:
+
+- **Hero status indicator** — Glowing ring shows system health at a glance: green = operational, amber = degraded, red = outage
+- **Component grid** — Individual service status with uptime percentages, not just a single "all systems" message
+- **Incident timeline** — Chronological events during outages: Reported → Investigating → Identified → Resolved
+- **Expandable RCA panel** — Structured post-mortem: Summary, Root Cause, Impact, Resolution, Prevention
+
+### Key Design Decisions
+
+| Decision | Why |
+|----------|-----|
+| Hero glow ring | Visual anchor — status is the most important information, make it impossible to miss |
+| Timeline visualization | Stakeholders want to see progress, not just current state |
+| Expandable RCA | Detailed analysis available on demand, doesn't clutter the main view |
+| Component-level status | Shows which services are affected, not just "system down" |
+
+### What This Proves
+
+I understand incident communication and post-mortem documentation. This isn't a generic status page — it's designed to reduce support ticket volume during outages by providing stakeholders with the information they need.
+
+---
+
 ## Screenshots
 
 The screenshots below were captured from the running app and are stored in `docs/screenshots/` as `status.png`, `timeline.png`, and `rca.png`.
