@@ -1,6 +1,7 @@
 import { CheckCircle, AlertCircle, Clock } from 'lucide-react';
 import type { Component, Incident } from '../types/incident';
 import { formatRelative } from '../utils/date';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface StatusOverviewProps {
   components: Component[];
@@ -23,24 +24,24 @@ export function StatusOverview({ components, incidents }: StatusOverviewProps) {
   const getStatusStyle = () => {
     if (hasMajorOutage) {
       return {
-        bg: 'bg-[var(--semantic-critical-muted)]',
-        icon: 'text-[var(--semantic-critical)]',
-        border: 'border-[var(--semantic-critical)]',
+        bg: 'var(--semantic-critical-muted)',
+        icon: 'var(--semantic-critical)',
+        border: 'var(--semantic-critical)',
         glowClass: 'status-indicator-critical',
       };
     }
     if (hasPartialOutage || hasDegraded) {
       return {
-        bg: 'bg-[var(--semantic-warning-muted)]',
-        icon: 'text-[var(--semantic-warning)]',
-        border: 'border-[var(--semantic-warning)]',
+        bg: 'var(--semantic-warning-muted)',
+        icon: 'var(--semantic-warning)',
+        border: 'var(--semantic-warning)',
         glowClass: 'status-indicator-warning',
       };
     }
     return {
-      bg: 'bg-[var(--semantic-success-muted)]',
-      icon: 'text-[var(--semantic-success)]',
-      border: 'border-[var(--semantic-success)]',
+      bg: 'var(--semantic-success-muted)',
+      icon: 'var(--semantic-success)',
+      border: 'var(--semantic-success)',
       glowClass: 'status-indicator-operational',
     };
   };
@@ -48,45 +49,68 @@ export function StatusOverview({ components, incidents }: StatusOverviewProps) {
   const statusStyle = getStatusStyle();
 
   return (
-    <div className="status-overview-card bg-[var(--surface-800)] rounded-xl border border-[var(--border-default)] p-6 shadow-[var(--shadow-md)]">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        {/* Status indicator */}
-        <div className="flex items-center gap-4">
-          <div className={`p-4 rounded-full ${statusStyle.bg} border-2 ${statusStyle.border} ${statusStyle.glowClass}`}>
-            {allOperational ? (
-              <CheckCircle className={`w-8 h-8 ${statusStyle.icon}`} />
-            ) : (
-              <AlertCircle className={`w-8 h-8 ${statusStyle.icon}`} />
-            )}
+    <Card className="rounded-xl">
+      <CardContent className="p-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          {/* Status indicator */}
+          <div className="flex items-center gap-4">
+            <div
+              className={`p-4 rounded-full border-2 ${statusStyle.glowClass}`}
+              style={{
+                background: statusStyle.bg,
+                borderColor: statusStyle.border,
+              }}
+            >
+              {allOperational ? (
+                <CheckCircle className="w-8 h-8" style={{ color: statusStyle.icon }} />
+              ) : (
+                <AlertCircle className="w-8 h-8" style={{ color: statusStyle.icon }} />
+              )}
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold" style={{ color: 'var(--text-100)' }}>
+                {allOperational ? 'All Systems Operational' : 'Degraded Performance'}
+              </h2>
+              <p className="mt-1" style={{ color: 'var(--text-300)' }}>
+                {operationalCount} of {totalComponents} components operational
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-[var(--text-100)]">
-              {allOperational ? 'All Systems Operational' : 'Degraded Performance'}
-            </h2>
-            <p className="text-[var(--text-300)] mt-1">
-              {operationalCount} of {totalComponents} components operational
-            </p>
+
+          {/* Stats */}
+          <div className="flex items-center gap-6">
+            <Card style={{ background: 'var(--surface-700)' }}>
+              <CardContent className="px-4 py-2 text-center">
+                <p className="text-2xl font-bold" style={{ color: 'var(--text-100)' }}>
+                  {activeIncidents.length}
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-400)' }}>
+                  Active Incidents
+                </p>
+              </CardContent>
+            </Card>
+            <Card style={{ background: 'var(--surface-700)' }}>
+              <CardContent className="px-4 py-2 text-center">
+                <p className="text-2xl font-bold" style={{ color: 'var(--text-100)' }}>
+                  {totalComponents}
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-400)' }}>
+                  Components
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="flex items-center gap-6">
-          <div className="text-center px-4 py-2 bg-[var(--surface-700)] rounded-lg">
-            <p className="text-2xl font-bold text-[var(--text-100)]">{activeIncidents.length}</p>
-            <p className="text-sm text-[var(--text-400)]">Active Incidents</p>
-          </div>
-          <div className="text-center px-4 py-2 bg-[var(--surface-700)] rounded-lg">
-            <p className="text-2xl font-bold text-[var(--text-100)]">{totalComponents}</p>
-            <p className="text-sm text-[var(--text-400)]">Components</p>
-          </div>
+        {/* Last updated */}
+        <div
+          className="flex items-center gap-2 mt-6 pt-4 text-sm"
+          style={{ color: 'var(--text-400)', borderTop: '1px solid var(--border-subtle)' }}
+        >
+          <Clock className="w-4 h-4" />
+          <span>Last updated {formatRelative(lastUpdated)}</span>
         </div>
-      </div>
-
-      {/* Last updated */}
-      <div className="flex items-center gap-2 mt-6 pt-4 border-t border-[var(--border-subtle)] text-sm text-[var(--text-400)]">
-        <Clock className="w-4 h-4" />
-        <span>Last updated {formatRelative(lastUpdated)}</span>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
