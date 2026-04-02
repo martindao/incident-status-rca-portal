@@ -37,22 +37,6 @@ I understand incident communication and post-mortem documentation. This isn't a 
 
 ---
 
-## Screenshots
-
-The screenshots below were captured from the running app and are stored in `docs/screenshots/` as `status.png`, `timeline.png`, and `rca.png`.
-
-| Status Overview | Incident Timeline | RCA Panel |
-|----------------|-------------------|-----------|
-| ![Status overview](docs/screenshots/status.png) | ![Incident timeline](docs/screenshots/timeline.png) | ![RCA panel](docs/screenshots/rca.png) |
-
-## Source inspiration disclosure
-
-This portfolio rebuild is visually and structurally inspired by open-source status page platforms:
-
-- **[OpenStatus](https://github.com/openstatusHQ/openstatus)** — public status communication patterns, component health summaries, incident history layout
-
-This is an original React implementation built for portfolio use. The goal is to study support-product patterns and recreate a focused incident communication workflow in a smaller standalone app. No source code was copied from the source project.
-
 ## Support relevance
 
 This repo is meant to show work that maps directly to application support and production triage responsibilities.
@@ -278,11 +262,7 @@ This project demonstrates key competencies for support engineering roles:
 - Prevention planning and process improvement
 
 ### Portfolio Value
-This is an original inspired rebuild, not a direct clone. It demonstrates understanding of incident management without requiring production infrastructure.
-
-## Inspiration
-
-This project was inspired by [openstatusHQ/openstatus](https://github.com/openstatusHQ/openstatus), an open-source status platform. It is an original rebuild for portfolio demonstration purposes, not a direct clone.
+This is an original portfolio project built by Martin Dao to demonstrate incident communication, stakeholder trust, and structured RCA workflows without depending on production infrastructure.
 
 ## License
 
